@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive MCQ Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .quiz-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Interactive MCQ Quiz</h1>
+        <div id="quiz">
+            <div class="question">
+                <h2>1. What is the capital of France?</h2>
+                <input type="radio" name="q1" value="A"> A) Berlin<br>
+                <input type="radio" name="q1" value="B"> B) Madrid<br>
+                <input type="radio" name="q1" value="C"> C) Paris<br>
+                <input type="radio" name="q1" value="D"> D) Lisbon<br>
+            </div>
+            <div class="question">
+                <h2>2. Who wrote 'Hamlet'?</h2>
+                <input type="radio" name="q2" value="A"> A) Charles Dickens<br>
+                <input type="radio" name="q2" value="B"> B) Mark Twain<br>
+                <input type="radio" name="q2" value="C"> C) William Shakespeare<br>
+                <input type="radio" name="q2" value="D"> D) Jane Austen<br>
+            </div>
+            <div class="question">
+                <h2>3. What is the largest planet in our Solar System?</h2>
+                <input type="radio" name="q3" value="A"> A) Earth<br>
+                <input type="radio" name="q3" value="B"> B) Jupiter<br>
+                <input type="radio" name="q3" value="C"> C) Mars<br>
+                <input type="radio" name="q3" value="D"> D) Saturn<br>
+            </div>
+            <div class="question">
+                <h2>4. What is the chemical symbol for Gold?</h2>
+                <input type="radio" name="q4" value="A"> A) Au<br>
+                <input type="radio" name="q4" value="B"> B) Ag<br>
+                <input type="radio" name="q4" value="C"> C) Pb<br>
+                <input type="radio" name="q4" value="D"> D) Fe<br>
+            </div>
+            <div class="question">
+                <h2>5. What year did the Titanic sink?</h2>
+                <input type="radio" name="q5" value="A"> A) 1905<br>
+                <input type="radio" name="q5" value="B"> B) 1912<br>
+                <input type="radio" name="q5" value="C"> C) 1920<br>
+                <input type="radio" name="q5" value="D"> D) 1930<br>
+            </div>
+            <button onclick="submitQuiz()">Submit Quiz</button>
+        </div>
+        <div id="result" class="result" style="display:none;"></div>
+    </div>
+    <script>
+        function submitQuiz() {
+            let totalQuestions = 5;
+            let score = 0;
+            if (document.querySelector('input[name="q1"]:checked')) score += (document.querySelector('input[name="q1"]:checked').value === 'C') ? 1 : 0;
+            if (document.querySelector('input[name="q2"]:checked')) score += (document.querySelector('input[name="q2"]:checked').value === 'C') ? 1 : 0;
+            if (document.querySelector('input[name="q3"]:checked')) score += (document.querySelector('input[name="q3"]:checked').value === 'B') ? 1 : 0;
+            if (document.querySelector('input[name="q4"]:checked')) score += (document.querySelector('input[name="q4"]:checked').value === 'A') ? 1 : 0;
+            if (document.querySelector('input[name="q5"]:checked')) score += (document.querySelector('input[name="q5"]:checked').value === 'B') ? 1 : 0;
+            let result = document.getElementById('result');
+            result.style.display = 'block';
+            result.innerHTML = 'You scored ' + score + ' out of ' + totalQuestions;
+        }
+    </script>
+</body>
+</html>
